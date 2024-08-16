@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <title>Miku Player</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1 class="title">
+        <a href="{% url 'all_audio' %}"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </a>
+         Miku player
+    </h1>
+        <div class="__main">
+    <div class="song_discr">
+        <img src="./1.jpg" alt="">
+        <h2>{{ song.title }} by</h2>
+        <h2>{{ song.artist }}</h2>
+    </div>
+
+
+    <div class="audio-player">
+        <button id="play-pause-btn"><i class="fa fa-play"></i></button>
+        <button id="prev-btn"><i class="fa fa-backward"></i></button>
+        <button id="next-btn"><i class="fa fa-forward"></i></button>
+        <button id="autoplay-btn"><i class="fa fa-repeat"></i></button>
+
+        <div class="progress-container">
+            <input type="range" id="progress-bar" value="0" max="100">
+        </div>
+
+        <div class="volume-container">
+            <i class="fa fa-volume-up"></i>
+            <input type="range" id="volume-bar" value="100" max="100">
+        </div>
+    </div>
+
+    <!-- Аудио файл -->
+    <audio id="audio" src="./1.mp3"></audio>
+
+</div>
+  
+    <script src="./script.js"></script>
+</body>
+</html>
