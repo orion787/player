@@ -9,8 +9,10 @@ const playPauseIcon = playPauseBtn.querySelector('i')
 const modal = document.querySelector('.modal')
 const modalOpen = document.querySelector('.fa-ellipsis-h')
 const modalClose = document.querySelector('.modal__close')
+const autoplayText = document.querySelector('.player__text')
 
 let isAutoplay = false
+let currentTimeout
 
 playPauseBtn.addEventListener('click', () => {
 	if (audio.paused || audio.ended) {
@@ -52,12 +54,24 @@ autoplayBtn.addEventListener('click', () => {
 	isAutoplay = !isAutoplay
 	autoplayBtn.classList.toggle('active')
 
+	// Очищаем текущий таймаут, если он есть
+	if (currentTimeout) {
+		clearTimeout(currentTimeout)
+	}
+
 	// Изменение цвета кнопки в зависимости от состояния
 	if (isAutoplay) {
-		autoplayBtn.style.backgroundColor = '#137A7F' // Синий цвет для включенного состояния
+		autoplayText.textContent = 'Повтор трека включен!'
 	} else {
-		autoplayBtn.style.backgroundColor = '#808080' // Серый цвет для выключенного состояния
+		autoplayText.textContent = 'Повтор трека выключен!'
 	}
+
+	autoplayText.classList.add('player__text_active')
+
+	// Устанавливаем новый таймаут и сохраняем его в переменную
+	currentTimeout = setTimeout(() => {
+		autoplayText.classList.remove('player__text_active')
+	}, 3000)
 })
 
 prevBtn.addEventListener('click', () => {

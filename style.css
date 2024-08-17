@@ -80,6 +80,23 @@ body {
 	}
 }
 
+.player__text {
+    display: none;
+    margin-top: 5px;
+    font-size: 25px;
+    color: black;
+    padding: 2px 10px;
+    background-color: #f9f6ee;
+    border-radius: 8px;
+    @media (max-width: 370px) {
+		font-size: 20px;
+	}
+}
+
+.player__text_active {
+    display: block;
+}
+
 button {
 	background-color: transparent;
 	border: none;
